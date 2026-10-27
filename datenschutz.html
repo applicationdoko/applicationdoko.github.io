@@ -7,9 +7,11 @@
 <!-- Datenschutzerklärung für App Store Connect (Pflichtfeld „Datenschutz-URL").
      Selbständige Seite ohne externe Ressourcen, damit sie überall gehostet
      werden kann und selbst nichts nachlädt. Die Aussagen sind am Code
-     geprüft (Stand 2026-10-04): keine HTTP-Aufrufe, Speicherung nur über
-     shared_preferences, Netzwerk nur der WLAN-Tisch. Wer daran in der App
-     etwas ändert, ändert diese Seite mit. -->
+     geprüft (Stand 2026-10-04, ergänzt 2026-10-27 für Version 1.2): keine
+     HTTP-Aufrufe, Speicherung nur über shared_preferences, Netzwerk nur der
+     WLAN-Tisch und – freiwillig – Game Center über Apples GameKit
+     (lib/net/game_center.dart, ios/Runner/GameCenterBridge.swift). Wer
+     daran in der App etwas ändert, ändert diese Seite mit. -->
 <style>
   :root { --bg:#F6E9D2; --text:#3C1F3D; --soft:#6B3568; --rule:#E0CEB0; }
   @media (prefers-color-scheme: dark) {
@@ -28,11 +30,12 @@
 <body>
 <main>
   <h1>Datenschutzerklärung</h1>
-  <p class="stand"><a href="./">DOKO! – Doppelkopf für iPhone</a> · Stand: 4. Oktober 2026</p>
+  <p class="stand"><a href="./">DOKO! – Doppelkopf für iPhone</a> · Stand: 27. Oktober 2026</p>
 
   <p><strong>Kurz gesagt:</strong> Die App erhebt keine personenbezogenen Daten und
-  überträgt nichts an uns oder an Dritte. Es gibt kein Konto, keine Werbung, keine
-  Analyse und keine Tracking-Dienste.</p>
+  überträgt nichts an uns. Es gibt kein Konto, keine Werbung, keine Analyse und
+  keine Tracking-Dienste. Nur wenn du Game Center nutzt, gehen deine
+  Tagesdeal-Ergebnisse an Apple (siehe unten). Das ist freiwillig.</p>
 
   <h2>Was auf deinem Gerät gespeichert wird</h2>
   <p>Damit du dort weiterspielen kannst, wo du aufgehört hast, speichert die App
@@ -62,6 +65,26 @@
   jederzeit unter Einstellungen → Datenschutz &amp; Sicherheit → Lokales Netzwerk
   wieder entziehen. Alles andere in der App funktioniert auch ohne sie.</p>
 
+  <h2>Game Center (freiwillig)</h2>
+  <p>Ab Version 1.2 kann die App den Tagesdeal mit Apples Game Center verbinden:
+  eine Bestenliste des Tages und Herausforderungen unter Freunden. Das ist
+  freiwillig. Die App fragt erst nach Game Center, wenn du auf „Mit anderen
+  vergleichen“ tippst. Ohne Anmeldung bei Game Center geschieht nichts davon.</p>
+  <p>Bist du bei Game Center angemeldet, schickt die App nach einem zu Ende
+  gespielten Tagesdeal über Apples Schnittstelle an Game Center:</p>
+  <ul>
+    <li>deine Punktzahl des Tages und die Bestenliste, in die sie gehört
+      („Schnell“ oder „Klassisch“).</li>
+  </ul>
+  <p>Zurück liest die App nur deinen Platz in dieser Liste, weltweit und unter
+  deinen Game-Center-Freunden. Abgebrochene Deals werden nicht gemeldet.</p>
+  <p>Die Bestenliste und die Herausforderungen betreibt Apple. Wir betreiben dafür
+  keinen Server und erhalten weder deine Punktzahl noch deinen Game-Center-Namen.
+  Wer deine Ergebnisse sehen kann, stellst du in deinem Game-Center-Profil ein. Dort
+  meldest du dich auch ab (Einstellungen → Game Center). Es gilt Apples
+  <a href="https://www.apple.com/legal/privacy/data/de/game-center/">Game Center &amp;
+  Datenschutz</a>.</p>
+
   <h2>Dienste von Apple</h2>
   <p>Beim Laden aus dem App Store und, falls du zugestimmt hast, beim Teilen von
   Absturzberichten mit Entwicklern verarbeitet Apple Daten nach eigenen
@@ -69,7 +92,9 @@
   <a href="https://www.apple.com/de/legal/privacy/">Datenschutzrichtlinie von Apple</a>.</p>
 
   <h2>Kinder</h2>
-  <p>Da die App keine Daten erhebt, erhebt sie auch keine Daten von Kindern.</p>
+  <p>Da die App keine Daten erhebt, erhebt sie auch keine Daten von Kindern. Ob
+  ein Kind Game Center nutzen darf, lässt sich in iOS unter Bildschirmzeit →
+  Beschränkungen festlegen.</p>
 
   <h2>Deine Rechte</h2>
   <p>Weil wir keine personenbezogenen Daten von dir besitzen, gibt es nichts, was
