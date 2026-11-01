@@ -8,10 +8,12 @@
      Selbständige Seite ohne externe Ressourcen, damit sie überall gehostet
      werden kann und selbst nichts nachlädt. Die Aussagen sind am Code
      geprüft (Stand 2026-10-04, ergänzt 2026-10-27 für Version 1.2 und
-     2026-10-31 für den Online-Tisch in 1.3): keine
+     2026-10-31 für den Online-Tisch in 1.3 und 2026-11-01 für die Tischliste in 1.4): keine
      HTTP-Aufrufe, Speicherung nur über shared_preferences, Netzwerk nur der
      WLAN-Tisch und – freiwillig – Game Center über Apples GameKit
-     (lib/net/game_center.dart, ios/Runner/GameCenterBridge.swift). Wer
+     (lib/net/game_center.dart, ios/Runner/GameCenterBridge.swift), dazu ab
+     1.4 die Liste offener Tische über CloudKit (lib/net/online_lobby.dart,
+     ios/Runner/OnlineLobby.swift). Wer
      daran in der App etwas ändert, ändert diese Seite mit. -->
 <style>
   :root { --bg:#F6E9D2; --text:#3C1F3D; --soft:#6B3568; --rule:#E0CEB0; }
@@ -31,7 +33,7 @@
 <body>
 <main>
   <h1>Datenschutzerklärung</h1>
-  <p class="stand"><a href="./">DOKO! – Doppelkopf für iPhone</a> · Stand: 27. Oktober 2026</p>
+  <p class="stand"><a href="./">DOKO! – Doppelkopf für iPhone</a> · Stand: 1. November 2026</p>
 
   <p><strong>Kurz gesagt:</strong> Die App erhebt keine personenbezogenen Daten und
   überträgt nichts an uns. Es gibt kein Konto, keine Werbung, keine Analyse und
@@ -93,6 +95,18 @@
   bekommt nur seine eigenen Karten. Wir betreiben dafür keinen Server und
   speichern nichts; was Apple dabei verarbeitet, regelt die oben verlinkte
   Datenschutzrichtlinie für Game Center.</p>
+
+  <p><strong>Liste offener Tische.</strong> Ab Version 1.4 zeigt die App unter
+  „Online“ die offenen Tische anderer Spieler. Machst du selbst einen offenen
+  Tisch auf, legt die App dafür einen Eintrag in Apples iCloud (CloudKit,
+  öffentliche Datenbank dieser App) ab: deinen Game-Center-Namen (der Tisch
+  heißt dann „Tisch von …“), den Code des Tisches, die Blattgröße, wie viele Menschen
+  sitzen und wann sich der Tisch zuletzt gemeldet hat. Diesen Eintrag sehen
+  alle, die die Liste öffnen. Die App löscht ihn, sobald du den Tisch
+  schließt; bleibt er doch einmal liegen (etwa nach einem Absturz), taucht er
+  nach gut einer Minute in keiner Liste mehr auf. Das Ablegen braucht ein
+  iCloud-Konto, das Ansehen der Liste nicht. Tische für Freunde und der
+  WLAN-Tisch stehen nicht in der Liste.</p>
 
   <h2>Dienste von Apple</h2>
   <p>Beim Laden aus dem App Store und, falls du zugestimmt hast, beim Teilen von
